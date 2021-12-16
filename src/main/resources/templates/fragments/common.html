@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en" class="html"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:fragment="head">
+    <meta charset="utf-8">
+    <title>GarageNerds</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="/css/style.css"/>
+    <link href="https://fonts.googleapis.com/css?family=Helvetica&display=swap" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <link rel="icon" type="image/png"
+          th:href="@{/images/mechanic1.png}">
+</head>
+
+<body>
+
+<nav class="navbar navbar-expand-md navbar-light navbar-color" th:fragment="nav">
+    <div class="container-fluid">
+        <a class="navbar-brand" style="color: white" href="/user/admin">GarageNerds</a>
+
+        <button
+                class="navbar-toggler"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#toggleMobileMenu"
+                aria-controls="toggleMobileMenu"
+                aria-expanded="false"
+                aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="toggleMobileMenu" >
+            <ul class="nav navbar-nav navbar-navs navbar-text text-center ms-auto " >
+
+                <li><a class="nav-link navbar-hover" href="/user/logout" style="color: white">
+                    <i class="bi bi-box-arrow-right" style="color: white"></i> Logout</a></li>
+
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+
+<div id="sidebar-wrapper" class="d-flex flex-column flex-shrink-0 bg-light" style="width: 4.5rem;" th:fragment="sidebar">
+
+    <ul class="nav nav-pills nav-flush flex-column mb-auto text-center"  >
+        <li>
+            <a href="/user/admin" class="nav-link py-3 border-bottom but" data-bs-toggle="tooltip"
+               data-bs-placement="right"  title="New jobs">
+                <img th:src="@{/images/electric-car.png}" style="width: 38px; height: 38px"/>
+            </a>
+        </li>
+        <li>
+            <a href="/user/ongoing-jobs" class="nav-link py-3 border-bottom but" title="Ongoing jobs" data-bs-toggle="tooltip"
+               data-bs-placement="right">
+                <img th:src="@{/images/mechanic.png}" style="width: 38px; height: 38px"/>
+            </a>
+        </li>
+        <li>
+            <a href="/user/archive" class="nav-link py-3 border-bottom but" title="Archive" data-bs-toggle="tooltip"
+               data-bs-placement="right">
+                <img th:src="@{/images/archive.png}" style="width: 38px; height: 38px"/>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
+        crossorigin="anonymous"></script>
+
+<script>
+    var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+    var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+        return new bootstrap.Tooltip(tooltipTriggerEl)
+    })
+</script>
+
+</body>
+</html>

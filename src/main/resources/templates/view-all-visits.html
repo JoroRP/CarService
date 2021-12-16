@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments/common :: head"></head>
+
+<body class="html body">
+
+<nav class="navbar navbar-expand-md fixed-top navbar-light navbar-color">
+    <div class="container-fluid">
+        <a class="navbar-brand" style="color: white" href="/home">GarageNerds</a>
+
+        <button
+                class="navbar-toggler"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#toggleMobileMenu"
+                aria-controls="toggleMobileMenu"
+                aria-expanded="false"
+                aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="toggleMobileMenu" >
+            <ul class="nav navbar-nav navbar-navs navbar-text text-center ms-auto " th:object="${username}">
+
+                <li><a class="nav-link navbar-hover" href="/user/profile" style="color: white">
+                    <i class="bi bi-file-person" style="color: white"></i> Profile</a></li>
+
+                <li><a class="nav-link navbar-hover" href="/user/logout" style="color: white">
+                    <i class="bi bi-box-arrow-right" style="color: white"></i> Logout</a></li>
+
+            </ul>
+        </div>
+    </div>
+</nav>
+<main>
+    <div>
+        <h1 class="view">Your visits to the service</h1>
+
+        <table class="table">
+            <tr>
+                <th>Appointment date</th>
+                <th>Current progress on the car</th>
+                <th>Mechanic on the job</th>
+                <th>Repair price</th>
+            </tr>
+            <tr th:each="i:${visitList}" th:object="${i}">
+                <td th:text="*{date}"></td>
+                <td th:text="*{progress}"></td>
+                <td th:text="*{mechanicName}" class="year"></td>
+                <td th:text="*{#numbers.formatDecimal(price,2,2)}"></td>
+
+            </tr>
+        </table>
+
+
+    </div>
+</main>
+
+</body>
+</html>

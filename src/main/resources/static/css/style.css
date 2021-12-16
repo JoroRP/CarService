@@ -1,0 +1,436 @@
+@import "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.css";
+
+.body {
+    background-color: white;
+}
+
+.body1{
+    height: 100%;
+    margin: 0;
+}
+
+.html {
+    height: 100%;
+    margin: 0;
+}
+
+.transparent {
+    opacity: 0;
+    height: 50%;
+}
+
+.bg {
+
+    background-image: url("/images/carserv.jpg");
+    height: 60%;
+    background-attachment: fixed;
+    background-position: top;
+    background-repeat: no-repeat;
+    background-size: 100% 75%;
+
+
+}
+
+.circular {
+    border-top-left-radius: 50% 50%;
+    border-top-right-radius: 50% 50%;
+    border-bottom-right-radius: 50% 50%;
+    border-bottom-left-radius: 50% 50%;
+}
+
+.hiddenRow {
+    padding: 0 !important;
+}
+
+.bg h1 {
+    font-family: 'Helvetica', sans-serif;
+    font-size: 7vw;
+    position: center;
+    color: white;
+    background: transparent;
+    background-size: cover;
+    padding-top: 150px;
+}
+
+.navbar-color {
+    background: #003fb5;
+    height: 60px;
+}
+
+.navbar-brand {
+    font-family: 'Helvetica', sans-serif;
+    font-size: 32px;
+    color: white;
+
+}
+
+
+.navbar-navs {
+    font-family: 'Helvetica', sans-serif;
+    font-size: 18px;
+    color: white;
+
+
+}
+
+.navbar-hover:hover {
+    color: green;
+}
+
+
+.logo-index {
+    font-family: 'Helvetica', sans-serif;
+    font-size: 7vw;
+    position: center;
+    padding-top: 100px;
+    color: black;
+}
+
+.logo-h1 {
+    font-family: 'Helvetica', sans-serif;
+    font-size: 7vw;
+    position: center;
+    color: white;
+    background: transparent;
+    background-size: cover;
+    padding-top: 150px;
+}
+
+.hr {
+
+    border: 4px solid #003fb5;
+    color: #003fb5;
+    margin: 0;
+    opacity: 1;
+
+}
+
+.welcome {
+    font-family: 'Helvetica', sans-serif;
+    font-size: 40px;
+    text-align: center;
+    padding-top: 200px;
+    color: lightseagreen;
+}
+
+.welcome-second {
+    font-family: 'Helvetica', sans-serif;
+    font-size: 40px;
+    text-align: center;
+    color: lightseagreen;
+}
+
+/*Login CSS*/
+.login-box {
+    color: #003fb5;
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    box-sizing: border-box;
+    padding: 70px 30px;
+}
+
+h1 {
+    margin: 0;
+    padding: 0 0 20px;
+    text-align: center;
+    font-size: 30px;
+    color: #003fb5;
+}
+
+.login-box p {
+    margin: 0;
+    padding: 0;
+    font-weight: bold;
+}
+
+.login-box input {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.login-box input[type="text"] {
+    border: none;
+    border-bottom: 1px solid #fff;
+    background: white;
+    outline: #003fb5;
+    outline-style: solid;
+    outline-width: 1px;
+    height: 37px;
+    color: black;
+    font-size: 16px;
+}
+
+.login-box input[type="password"] {
+    border: none;
+    border-bottom: 1px solid #fff;
+    background: white;
+    outline: #0059b3;
+    outline-style: solid;
+    outline-width: 1px;
+    height: 37px;
+    color: black;
+    font-size: 16px;
+}
+
+.login-box input[type="submit"] {
+    border: none;
+    outline: none;
+    height: 40px;
+    background: #0059b3;
+    color: white;
+    font-size: 18px;
+    border-radius: 20px;
+}
+
+.login-box input[type="submit"]:hover {
+    cursor: pointer;
+    background: deepskyblue;
+    color: white;
+}
+
+/*Register CSS*/
+.register-box {
+    width: 320px;
+    height: 700px;
+    color: #0059b3;
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    box-sizing: border-box;
+    padding: 70px 30px;
+}
+
+.register-box p {
+    margin: 0;
+    padding: 0;
+    font-weight: bold;
+}
+
+.register-box input {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.register-box input[type="text"], input[type="password"], input[type="email"] {
+    border: none;
+    border-bottom: 1px solid #fff;
+    background: white;
+    outline: #0059b3;
+    outline-style: solid;
+    outline-width: 1px;
+    height: 37px;
+    color: black;
+    font-size: 16px;
+}
+
+.register-box input[type="submit"] {
+    border: none;
+    outline: none;
+    height: 40px;
+    background: #0059b3;
+    color: white;
+    font-size: 18px;
+    border-radius: 20px;
+}
+
+.register-box input[type="submit"]:hover {
+    cursor: pointer;
+    background: deepskyblue;
+    color: white;
+}
+
+/*profile CSS*/
+.welcome-user {
+    padding-top: 15px;
+    text-align: center;
+    font-family: 'Helvetica', sans-serif;
+    font-size: 36px;
+
+
+}
+
+.hr-p {
+
+    border: 2px solid #0059b3;
+    opacity: 0.7;
+    margin-top: 350px;
+    margin-bottom: 50px
+}
+
+.hr-p1{
+    border: 2px solid #0059b3;
+    opacity: 0.7;
+    margin-top: 20px;
+    margin-bottom: 20px
+}
+
+.table {
+    font-family: Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.table-row1{
+    height: 70px;
+}
+
+.table td, th {
+    border: 1px solid #dddddd;
+    text-align: center;
+    font-size: 16px;
+}
+
+.page-wrapper1{
+    padding-top: 70px;
+    padding-left: 10px;
+    padding-right: 5px;
+    height: 100%;
+    background-color: #dddddd;
+    overflow-y: hidden;
+}
+
+.c2 {
+    position: static;
+    height: 95%;
+}
+
+.page-wrapper2{
+    padding-top: 70px;
+    padding-right: 10px;
+    padding-left: 5px;
+    height: 100%;
+    background-color: #dddddd;
+    overflow-y: hidden;
+}
+
+.r1{
+    height: 100%;
+    margin: 0;
+}
+
+.c3{
+    position: static;
+    height: 95%;
+}
+
+/*Admin CSS*/
+
+
+#sidebar-wrapper {
+    z-index: 1;
+    position: absolute;
+    width: 50px;
+    height: calc(100% - 60px);
+    overflow-y: hidden;
+}
+
+#sidebar-wrapper .but:hover {
+    color: rgba(0, 0, 0, .85);
+    background-color: silver;
+}
+
+#page-wrapper {
+    width: 100%;
+    position: absolute;
+    padding-top: 15px;
+    padding-left: 85px;
+    padding-right: 10px;
+    height: calc(100% - 60px);
+    background-color: #dddddd;
+}
+
+.c1 {
+    position: static;
+    height: 90%;
+}
+
+
+.collapse,
+.collapsing {
+    overflow: auto;
+    max-height: 80%;
+}
+
+/*add-car CSS*/
+.add-car {
+    color: darkblue;
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    box-sizing: border-box;
+    padding: 70px 30px;
+}
+
+.add-car p {
+    margin: 0;
+    padding: 0;
+    font-weight: bold;
+    color: #0059b3;
+}
+
+.add-car input {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.add-car input[type="text"], input[type="date"] {
+    border: none;
+    border-bottom: 1px solid #fff;
+    background: white;
+    outline: #0059b3;
+    outline-style: solid;
+    outline-width: 1px;
+    height: 37px;
+    color: black;
+    font-size: 16px;
+}
+
+.add-car input[type="submit"] {
+    border: none;
+    outline: none;
+    height: 40px;
+    background: #0059b3;
+    color: white;
+    font-size: 18px;
+    border-radius: 20px;
+}
+
+.add-car input[type="submit"]:hover {
+    cursor: pointer;
+    background: deepskyblue;
+    color: white;
+}
+
+/*View-car CSS*/
+.car-view {
+    font-family: 'Helvetica', sans-serif;
+    font-size: 34px;
+    color: #0059b3;
+    text-align: center;
+    padding-top: 300px;
+    position: center;
+}
+
+.car-view:hover {
+    text-decoration: none;
+    color: deepskyblue;
+}
+
+.view {
+    font-family: 'Helvetica', sans-serif;
+    font-size: 36px;
+    padding-top: 70px;
+    padding-bottom: 70px;
+    color: #0059b3;
+}
+
+
+.error-message {
+    color: #0059b3;
+    font-size: 39px;
+    text-align: center;
+}

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html class="html" lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments/common :: head"></head>
+
+<body class="body1">
+
+<nav class="navbar navbar-expand-md fixed-top navbar-light navbar-color">
+    <div class="container-fluid">
+        <a class="navbar-brand" style="color: white" href="/home">GarageNerds</a>
+
+        <button
+                class="navbar-toggler"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#toggleMobileMenu"
+                aria-controls="toggleMobileMenu"
+                aria-expanded="false"
+                aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="toggleMobileMenu">
+            <ul class="nav navbar-nav navbar-navs navbar-text text-center ms-auto " th:object="${username}">
+
+                <li><a class="nav-link navbar-hover" th:href="@{/car/add/(username=${username})}" style="color: white">
+                    <i class="bi bi-patch-plus" style="color: white"></i> Add car</a></li>
+
+                <li><a class="nav-link navbar-hover" href="/user/logout" style="color: white">
+                    <i class="bi bi-box-arrow-right" style="color: white"></i> Logout</a></li>
+
+            </ul>
+        </div>
+    </div>
+</nav>
+<main class="body1">
+
+
+    <div class="row r1">
+
+        <div class="col-3 page-wrapper1">
+
+                <div class="card c2" th:object="${user}">
+                    <div class="card-body">
+
+                        <div class="welcome-user" >
+                            <span> Hi </span>
+                            <span th:text="*{username}"></span>
+                            <span>!</span>
+                        </div>
+                        <hr class="hr-p">
+
+                                <h5>Profile info</h5>
+                                <table class="table">
+                                    <thead>
+
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <th scope="row">First name</th>
+                                        <td th:text="*{firstName}"></td>
+
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Last name</th>
+                                        <td th:text="*{lastName}"></td>
+
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Email</th>
+                                        <td th:text="*{email}"></td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+
+
+
+                    </div>
+                </div>
+
+        </div>
+
+
+        <div class="col-9 page-wrapper2" >
+
+                <div class="card c3 ">
+                    <div class="card-body">
+
+                        <div>
+                            <div class="welcome-user">Your list of cars</div>
+                            <hr class="hr-p1">
+                            <table class="table table-striped">
+                                <tr>
+                                    <th>Model</th>
+                                    <th>Licence plate</th>
+                                    <th>Year</th>
+                                    <th>Car overview</th>
+                                    <th>Visits overview</th>
+                                    <th>add</th>
+                                </tr>
+                                <tr th:each="d:${carList}" th:object="${d}">
+                                    <td th:text="*{model}"></td>
+                                    <td th:text="*{licencePlate}"></td>
+                                    <td th:text="*{year}"></td>
+                                    <td><a class="btn btn-success" th:href="@{/car/view-car/(id=*{id})}">view car</a></td>
+                                    <td><a class="btn btn-success" th:href="@{/visit/view-all-visits/(id=*{id})}">view visits</a></td>
+                                    <td><a class="btn btn-success" th:href="@{/visit/add/(id=*{id})}">add visit</a></td>
+                                </tr>
+                            </table>
+                        </div>
+
+                    </div>
+                </div>
+
+        </div>
+
+    </div>
+
+</main>
+</body>
+</html>

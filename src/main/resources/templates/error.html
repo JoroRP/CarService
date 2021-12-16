@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+
+<head th:replace="fragments/common :: head"></head>>
+
+<body class="html body">
+
+<nav class="navbar navbar-expand-md fixed-top navbar-light navbar-color">
+    <div class="container-fluid">
+        <th:block th:if="${session.isEmpty()}">
+        <a class="navbar-brand" style="color: white" href="/home">GarageNerds</a>
+        </th:block>
+
+        <th:block th:unless="${session.isEmpty()}">
+            <a class="navbar-brand" style="color: white" href="/">GarageNerds</a>
+        </th:block>
+
+        <button
+                class="navbar-toggler"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#toggleMobileMenu"
+                aria-controls="toggleMobileMenu"
+                aria-expanded="false"
+                aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="toggleMobileMenu">
+            <ul class="nav navbar-nav navbar-navs navbar-text text-center ms-auto ">
+
+                <th:block th:if="${session.isEmpty()}">
+                        <li><a class="nav-link navbar-hover" href="/user/profile" style="color: white">
+                            <i class="bi bi-file-person" style="color: white"></i> Profile</a></li>
+                        <li><a class="nav-link navbar-hover" href="/user/logout" style="color: white">
+                            <i class="bi bi-box-arrow-right" style="color: white"></i> Logout</a></li>
+                </th:block>
+
+                <th:block th:unless="${session.isEmpty()}">
+                    <li ><a class="nav-link navbar-hover" href="/user/login" style="color: white">
+                        <i class="bi bi-file-person" style="color: white"></i> Login</a></li>
+                    <li ><a class="nav-link navbar-hover" href="/user/register" style="color: white">
+                        <i class="bi bi-box-arrow-right" style="color: white"></i>Register</a></li>
+                </th:block>
+
+            </ul>
+        </div>
+    </div>
+</nav>
+<main>
+    <!--/*@thymesVar id="message" type="message"*/-->
+    <p class="error-message" th:text="|Something went wrong :(|"></p>
+    <p class="error-message" th:text="|Error: ${message}|"></p>
+</main>
+
+</body>
+</html>

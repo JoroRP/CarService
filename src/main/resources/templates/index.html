@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en" class="html" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8">
+    <title>GarageNerds</title>
+    <meta name="keywords"
+          content="service, servic, serviz, zervice, zerviz, services, workshop, chopshop, сервиз, сервис, сервизи, зервис, сервис, сервиси, awto, auto, avto, dwigateli, dvigateli, engine, engines, двигатели, кутии, kutii, gears">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="/css/style.css"/>
+    <link rel="stylesheet" href="/css/carousel.css"/>
+    <link href="https://fonts.googleapis.com/css?family=Helvetica&display=swap" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <link rel="icon" type="image/png"
+          th:href="@{/images/mechanic1.png}">
+
+</head>
+
+<body class="html body">
+
+<nav class="navbar navbar-expand-md fixed-top navbar-light  navbar-color" style="background-color: #003fb5;">
+    <div class="container-fluid">
+        <a class="navbar-brand" style="color: white" href="/">GarageNerds</a>
+
+        <button
+                class="navbar-toggler"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#toggleMobileMenu"
+                aria-controls="toggleMobileMenu"
+                aria-expanded="false"
+                aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="toggleMobileMenu">
+            <ul class="nav navbar-nav navbar-navs navbar-text text-center ms-auto ">
+
+                <li><a class="nav-link navbar-hover" href="/user/login" style="color: white">
+                    <i class="bi bi-box-arrow-in-right" style="color: white "></i> Login</a></li>
+
+                <li><a class="nav-link" href="/user/register" style="color: white">
+                    <i class="bi bi-person-plus-fill" style="color: white"></i> Register</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+</nav>
+
+<section class="bg"></section>
+
+<hr class="hr">
+<main class="html ">
+
+    <div class="container marketing">
+
+        <div class="row">
+            <div class="col-lg-4">
+
+                <img class="circular" th:src="@{/images/tyre-pic.jpg}" width="160" height="160" />
+
+                <h2>Tires</h2>
+                <p>Free tire balancing when changing tires</p>
+                <p><a class="btn btn-secondary" href="#tires">View details &raquo;</a></p>
+            </div>
+            <div class="col-lg-4">
+
+                <img class="circular" th:src="@{/images/diag.jpg}" width="160" height="160" />
+
+                <h2>Diagnostics</h2>
+                <p>Full diagnostic examination</p>
+                <p><a class="btn btn-secondary" href="#diag">View details &raquo;</a></p>
+            </div>
+            <div class="col-lg-4">
+
+                <img class="circular" th:src="@{/images/oil1.jpg}" width="160" height="160" />
+
+                <h2>Service</h2>
+                <p>Full range of services for your car </p>
+                <p><a class="btn btn-secondary" href="#service">View details &raquo;</a></p>
+            </div>
+        </div>
+
+        <div id="tires"></div>
+        <hr class="featurette-divider" >
+
+        <div class="row featurette" >
+            <div class="col-md-7">
+                <h2 class="featurette-heading">Tires and rims</h2>
+                <p class="lead">We provide a wide selection of tires and new rims. We offer tire balancing, seasonal tire changes with a free balancing, rim styling nad painting. </p>
+            </div>
+            <div class="col-md-5">
+                <img th:src="@{/images/rim4.jpg}" width="500" height="500" />
+
+            </div>
+        </div>
+
+        <div id="diag"></div>
+        <hr class="featurette-divider">
+
+        <div class="row featurette">
+            <div class="col-md-7 order-md-2">
+                <h2 class="featurette-heading">Full car diagnostics and repairs</h2>
+                <p class="lead">We offer full elctronic and mechanical diagnostics, part ordering and repairs. Our specialists have a lot of experience in the field of auto engineering and service!</p>
+            </div>
+            <div class="col-md-5 order-md-1">
+                <img th:src="@{/images/diag3.jpg}" width="500" height="500" />
+
+            </div>
+        </div>
+
+        <div id="service"></div>
+        <hr class="featurette-divider">
+
+        <div class="row featurette">
+            <div class="col-md-7">
+                <h2 class="featurette-heading">Frequent service and care for you automobile</h2>
+                <p class="lead">We take pride in our caring approatch to every client's car as of our own. You can trust us with annual oil and other consumable changes, headlights, cosmetics refreshings and many more!</p>
+            </div>
+            <div class="col-md-5">
+                <img th:src="@{/images/service.jpg}" width="500" height="500" />
+
+            </div>
+        </div>
+
+        <hr class="featurette-divider">
+    </div>
+
+
+
+    <footer class="bg-light text-center text-white">
+
+        <div class="container p-4 pb-0">
+            <section class="mb-4">
+
+                <a
+                        class="btn btn-primary btn-floating m-1"
+                        style="background-color: #3b5998;"
+                        href="#!"
+                        role="button"
+                ><i class="bi bi-facebook"></i
+                ></a>
+
+                <a
+                        class="btn btn-primary btn-floating m-1"
+                        style="background-color: #55acee;"
+                        href="#!"
+                        role="button"
+                ><i class="bi bi-twitter"></i
+                ></a>
+
+                <a
+                        class="btn btn-primary btn-floating m-1"
+                        style="background-color: #dd4b39;"
+                        href="#!"
+                        role="button"
+                ><i class="bi bi-google"></i
+                ></a>
+
+                <a
+                        class="btn btn-primary btn-floating m-1"
+                        style="background-color: #ac2bac;"
+                        href="#!"
+                        role="button"
+                ><i class="bi bi-instagram"></i
+                ></a>
+
+                <a
+                        class="btn btn-primary btn-floating m-1"
+                        style="background-color: #0082ca;"
+                        href="#!"
+                        role="button"
+                ><i class="bi bi-linkedin"></i
+                ></a>
+
+            </section>
+        </div>
+
+        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+            © 2020 Copyright: GarageNerds Inc.
+            <a href="#">Privacy</a> &middot; <a href="#">Terms</a>
+        </div>
+
+    </footer>
+
+</main>
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
+        crossorigin="anonymous"></script>
+</body>
+</html>
