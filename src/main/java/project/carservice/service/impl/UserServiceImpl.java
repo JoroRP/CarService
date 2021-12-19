@@ -74,7 +74,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public void loginUser(String username, String password) {
         UserDetailsServiceModel userDetailsServiceModel = this.findUserByUsername(username);
-      //  if (!passwordEncoder.matches(password,userDetailsServiceModel.getPassword())) {
+       // if (!passwordEncoder.matches(password,userDetailsServiceModel.getPassword())) {
        //     throw new PasswordNotCorrectException();
        // }
         UserDetails userDetails = userDetailsService.loadUserByUsername(username);
@@ -84,6 +84,7 @@ public class UserServiceImpl implements UserService {
         SecurityContextHolder.getContext().setAuthentication(authentication);
 
     }
+
 
     @Override
     public boolean isAdmin(String username) {

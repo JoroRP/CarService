@@ -1,11 +1,16 @@
 package project.carservice.model.service;
 
+import project.carservice.model.entity.RoleEntity;
+
+import java.util.List;
+
 public class UserServiceModel {
     private String username;
     private String password;
     private String firstName;
     private String lastName;
     private String email;
+    private List<RoleEntity> roles;
 
     public UserServiceModel() {
     }
@@ -48,5 +53,13 @@ public class UserServiceModel {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public List<RoleEntity> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(List<RoleEntity> roles) {
+        this.roles = roles;
     }
 }

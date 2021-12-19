@@ -48,7 +48,6 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         UserEntity userEntity = userRepository.findByUsername(username)
                 .orElseThrow(() -> new UsernameNotFoundException("User with name" + username + "was not found."));
 
-
         return map(userEntity);
     }
 

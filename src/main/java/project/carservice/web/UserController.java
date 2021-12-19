@@ -83,8 +83,7 @@ public class UserController {
     @PostMapping("/login")
     public String loginConfirm(@Valid @ModelAttribute("userLoginBindingModel")
                                        UserLoginBindingModel userLoginBindingModel,
-                               BindingResult bindingResult, RedirectAttributes redirectAttributes,
-                               ModelAndView modelAndView) {
+                               BindingResult bindingResult, RedirectAttributes redirectAttributes) {
         if (bindingResult.hasErrors()) {
 
             redirectAttributes.addFlashAttribute("userLoginBindingModel", userLoginBindingModel);
