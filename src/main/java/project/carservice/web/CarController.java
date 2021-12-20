@@ -29,13 +29,13 @@ public class CarController {
     }
 
     @GetMapping("/add")
-    String addCar(@RequestParam("username")String username, Model model){
+    public String addCar(@RequestParam("username")String username, Model model){
         model.addAttribute("carAddBindingModel",new CarAddBindingModel());
         model.addAttribute("username",username);
         return "add-car";
     }
     @PostMapping("/add")
-    ModelAndView addConfirmCar(@RequestParam("username")String username, @Valid @ModelAttribute("carAddBindingModel")
+    public ModelAndView addConfirmCar(@RequestParam("username")String username, @Valid @ModelAttribute("carAddBindingModel")
             CarAddBindingModel carAddBindingModel,
                                BindingResult bindingResult, RedirectAttributes redirectAttributes, ModelAndView modelAndView){
         if(bindingResult.hasErrors()){
@@ -52,7 +52,7 @@ public class CarController {
         return modelAndView;
     }
     @GetMapping("/view-car")
-    String viewCars(@RequestParam("id")String id,Model model) {
+    public String viewCars(@RequestParam("id")String id,Model model) {
         CarServiceModel carServiceModel=this.carService.findCarById(id);
         CarViewModel carViewModel=this.modelMapper.map(carServiceModel,CarViewModel.class);
         carViewModel.setModel(carServiceModel.getModel());

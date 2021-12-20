@@ -17,16 +17,21 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import project.carservice.error.UserNotFoundException;
 import project.carservice.model.binding.UserLoginBindingModel;
 import project.carservice.model.binding.UserRegisterBindingModel;
-import project.carservice.model.entity.UserEntity;
+import project.carservice.model.binding.VisitStatusBindingModel;
+import project.carservice.model.entity.*;
+import project.carservice.repository.CarRepository;
+import project.carservice.repository.MechanicRepository;
 import project.carservice.repository.UserRepository;
+import project.carservice.repository.VisitRepository;
 import project.carservice.web.UserController;
 
 import javax.servlet.http.HttpSession;
 import javax.transaction.Transactional;
 import java.security.Principal;
+import java.time.LocalDate;
 import java.util.ArrayList;
 
-import static org.mockito.ArgumentMatchers.anyString;
+
 import static org.mockito.Mockito.when;
 
 @SpringBootTest
@@ -51,6 +56,12 @@ public class UserControllerTest {
     private PasswordEncoder passwordEncoder;
     @Autowired
     private UserRepository userRepository;
+    @Autowired
+    private CarRepository carRepository;
+    @Autowired
+    private VisitRepository visitRepository;
+    @Autowired
+    private MechanicRepository mechanicRepository;
 
     @Test
     public void testRegister(){
@@ -69,7 +80,7 @@ public class UserControllerTest {
         userRegisterBindingModel.setEmail("email@gmail.com");
         userRegisterBindingModel.setFirstName("User");
         userRegisterBindingModel.setLastName("User");
-        ModelAndView modelAndView=new ModelAndView();
+
 
         String view=this.userController.registerConfirm(userRegisterBindingModel,bindingResult,httpSession,redirectAttributes,model);
         Assert.assertEquals("index",view);
@@ -84,7 +95,7 @@ public class UserControllerTest {
         userRegisterBindingModel.setEmail(passwordEncoder.encode("email@gmail.com"));
         userRegisterBindingModel.setFirstName("User");
         userRegisterBindingModel.setLastName("User");
-        ModelAndView modelAndView=new ModelAndView();
+
 
         String view=this.userController.registerConfirm(userRegisterBindingModel,bindingResult,httpSession,redirectAttributes,model);
         Assert.assertEquals("register",view);
@@ -112,9 +123,10 @@ public class UserControllerTest {
         UserEntity userEntity1=this.userRepository.save(userEntity);
 
         UserLoginBindingModel userLoginBindingModel=new UserLoginBindingModel();
-        userLoginBindingModel.setPassword("12345");
-        userLoginBindingModel.setUsername(userEntity1.getUsername());
+        userLoginBindingModel.setPassword(userEntity1.getPassword());
+        userLoginBindingModel.setUsername("Not_User");
         String view=this.userController.loginConfirm(userLoginBindingModel,bindingResult,redirectAttributes);
+        Assert.assertEquals("redirect:/user/profile",view);
     }
 
     @Test
@@ -124,7 +136,201 @@ public class UserControllerTest {
 
     }
 
+    @Test
+    public void testProfile(){
+        UserEntity userEntity=new UserEntity();
+        userEntity.setEmail("email@gmail.com");
+        userEntity.setPassword("12345");
+        userEntity.setLastName("User");
+        userEntity.setFirstName("User");
+        userEntity.setRoles(new ArrayList<>());
+        userEntity.setCars(new ArrayList<>());
+        userEntity.setUsername("Username");
 
 
+        UserEntity userEntity1=this.userRepository.save(userEntity);
+        when(principal.getName()).thenReturn(userEntity1.getUsername());
+
+        String view=this.userController.getFullStatistics(model,principal);
+        Assert.assertEquals("profile",view);
+    }
+
+    @Test(expected = UserNotFoundException.class)
+    public void testProfileToThrow(){
+        UserEntity userEntity=new UserEntity();
+        userEntity.setEmail("email@gmail.com");
+        userEntity.setPassword("12345");
+        userEntity.setLastName("User");
+        userEntity.setFirstName("User");
+        userEntity.setRoles(new ArrayList<>());
+        userEntity.setCars(new ArrayList<>());
+        userEntity.setUsername("Username");
+
+
+        UserEntity userEntity1=this.userRepository.save(userEntity);
+        when(principal.getName()).thenReturn("User");
+
+        String view=this.userController.getFullStatistics(model,principal);
+        Assert.assertEquals("profile",view);
+    }
+
+    @Test
+    public void testAdmin(){
+        UserEntity userEntity=new UserEntity();
+        userEntity.setEmail("email@gmail.com");
+        userEntity.setPassword("12345");
+        userEntity.setLastName("User");
+        userEntity.setFirstName("User");
+        userEntity.setRoles(new ArrayList<>());
+        userEntity.setCars(new ArrayList<>());
+        userEntity.setUsername("Username");
+
+
+        UserEntity userEntity1=this.userRepository.save(userEntity);
+        when(principal.getName()).thenReturn(userEntity1.getUsername());
+
+        String view=this.userController.getFullAdminStatistics(model,principal);
+        Assert.assertEquals("admin",view);
+    }
+
+    @Test(expected = UserNotFoundException.class)
+    public void testAdminToThrow(){
+        UserEntity userEntity=new UserEntity();
+        userEntity.setEmail("email@gmail.com");
+        userEntity.setPassword("12345");
+        userEntity.setLastName("User");
+        userEntity.setFirstName("User");
+        userEntity.setRoles(new ArrayList<>());
+        userEntity.setCars(new ArrayList<>());
+        userEntity.setUsername("Username");
+
+
+        UserEntity userEntity1=this.userRepository.save(userEntity);
+        when(principal.getName()).thenReturn("User");
+
+        String view=this.userController.getFullAdminStatistics(model,principal);
+        Assert.assertEquals("admin",view);
+    }
+
+    @Test
+    public void testAdminJobs(){
+        UserEntity userEntity=new UserEntity();
+        userEntity.setEmail("email@gmail.com");
+        userEntity.setPassword("12345");
+        userEntity.setLastName("User");
+        userEntity.setFirstName("User");
+        userEntity.setRoles(new ArrayList<>());
+        userEntity.setCars(new ArrayList<>());
+        userEntity.setUsername("Username");
+
+
+        UserEntity userEntity1=this.userRepository.save(userEntity);
+        when(principal.getName()).thenReturn(userEntity1.getUsername());
+
+        String view=this.userController.getFullAdminStatistics(model,principal);
+        Assert.assertEquals("admin",view);
+    }
+
+    @Test(expected = UserNotFoundException.class)
+    public void testAdminJobsToThrow(){
+        UserEntity userEntity=new UserEntity();
+        userEntity.setEmail("email@gmail.com");
+        userEntity.setPassword("12345");
+        userEntity.setLastName("User");
+        userEntity.setFirstName("User");
+        userEntity.setRoles(new ArrayList<>());
+        userEntity.setCars(new ArrayList<>());
+        userEntity.setUsername("Username");
+
+
+        UserEntity userEntity1=this.userRepository.save(userEntity);
+        when(principal.getName()).thenReturn("User");
+
+        String view=this.userController.getFullAdminStatistics(model,principal);
+        Assert.assertEquals("admin",view);
+    }
+
+    @Test
+    public void testAdminArchive(){
+        UserEntity userEntity=new UserEntity();
+        userEntity.setEmail("email@gmail.com");
+        userEntity.setPassword("12345");
+        userEntity.setLastName("User");
+        userEntity.setFirstName("User");
+        userEntity.setRoles(new ArrayList<>());
+        userEntity.setCars(new ArrayList<>());
+        userEntity.setUsername("Username");
+
+
+        UserEntity userEntity1=this.userRepository.save(userEntity);
+        when(principal.getName()).thenReturn(userEntity1.getUsername());
+
+        String view=this.userController.getFullAdminStatistics(model,principal);
+        Assert.assertEquals("admin",view);
+    }
+
+    @Test(expected = UserNotFoundException.class)
+    public void testAdminArchiveToThrow(){
+        UserEntity userEntity=new UserEntity();
+        userEntity.setEmail("email@gmail.com");
+        userEntity.setPassword("12345");
+        userEntity.setLastName("User");
+        userEntity.setFirstName("User");
+        userEntity.setRoles(new ArrayList<>());
+        userEntity.setCars(new ArrayList<>());
+        userEntity.setUsername("Username");
+
+
+        UserEntity userEntity1=this.userRepository.save(userEntity);
+        when(principal.getName()).thenReturn("User");
+
+        String view=this.userController.getFullAdminStatistics(model,principal);
+        Assert.assertEquals("admin",view);
+    }
+
+    @Test
+    public void statusChange(){
+        UserEntity userEntity = new UserEntity();
+        userEntity.setEmail("email@gmail.com");
+        userEntity.setPassword("12345");
+        userEntity.setLastName("User");
+        userEntity.setFirstName("User");
+        userEntity.setRoles(new ArrayList<>());
+        userEntity.setCars(new ArrayList<>());
+        userEntity.setUsername("Username");
+
+        UserEntity userEntity1 = this.userRepository.save(userEntity);
+
+        LocalDate localDate = LocalDate.of(2017,1,13);
+        Car car = new Car();
+        car.setModel("audi");
+        car.setLicensePlate("PB0000CH");
+        car.setYear(localDate);
+        car.setVisits(new ArrayList<>());
+        car.setUser(userEntity1);
+
+        Car carT = this.carRepository.save(car);
+
+        Progress progress = Progress.AWAITING_VEHICLE;
+        Mechanic mechanic = new Mechanic();
+        mechanic.setVisits(new ArrayList<>());
+        mechanic.setName("Pesho");
+
+        Mechanic mechanicT = this.mechanicRepository.save(mechanic);
+
+        Visit visit = new Visit();
+        visit.setCar(carT);
+        visit.setDate(LocalDate.now());
+        visit.setPrice(80.8);
+        visit.setParts("sdasd");
+        visit.setProgress(progress);
+        visit.setUser(userEntity1);
+        visit.setMechanic(mechanicT);
+
+        Visit visitT = this.visitRepository.save(visit);
+        VisitStatusBindingModel visitStatusBindingModel = new VisitStatusBindingModel();
+        String view = this.userController.statusChangeConfirm(visitT.getId(),model,visitStatusBindingModel,principal);
+        Assert.assertEquals("redirect:/user/admin",view);
+    }
 
 }

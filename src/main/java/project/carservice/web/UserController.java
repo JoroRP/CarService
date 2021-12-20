@@ -117,7 +117,7 @@ public class UserController {
 
 
     @GetMapping("/profile")
-    String getFullStatistics(Model model, @AuthenticationPrincipal Principal principal){
+    public String getFullStatistics(Model model, @AuthenticationPrincipal Principal principal){
         model.addAttribute("username",principal.getName());
         model.addAttribute("user",this.userService.getUser(principal.getName()));
         model.addAttribute("roles",this.userService.getUser(principal.getName()).getRoles());
@@ -126,7 +126,7 @@ public class UserController {
     }
 
     @GetMapping("/admin")
-    String getFullAdminStatistics(Model model, @AuthenticationPrincipal Principal principal){
+    public String getFullAdminStatistics(Model model, @AuthenticationPrincipal Principal principal){
 
         model.addAttribute("username",principal.getName());
         model.addAttribute("user",this.userService.getUser(principal.getName()));
@@ -138,7 +138,7 @@ public class UserController {
     }
 
     @GetMapping("/ongoing-jobs")
-    String getFullAdminJobs(Model model, @AuthenticationPrincipal Principal principal){
+    public String getFullAdminJobs(Model model, @AuthenticationPrincipal Principal principal){
 
         model.addAttribute("username",principal.getName());
         model.addAttribute("user",this.userService.getUser(principal.getName()));
@@ -150,7 +150,7 @@ public class UserController {
     }
 
     @GetMapping("/archive")
-    String getFullAdminArchive(Model model, @AuthenticationPrincipal Principal principal){
+    public String getFullAdminArchive(Model model, @AuthenticationPrincipal Principal principal){
 
         model.addAttribute("username",principal.getName());
         model.addAttribute("user",this.userService.getUser(principal.getName()));
@@ -162,7 +162,7 @@ public class UserController {
     }
 
     @PostMapping("/status-change")
-    String statusChangeConfirm(@RequestParam("id")String id, Model model,
+    public String statusChangeConfirm(@RequestParam("id")String id, Model model,
                                @Valid @ModelAttribute("visitStatusBindingModel")
                                VisitStatusBindingModel visitStatusBindingModel,
                                @AuthenticationPrincipal Principal principal){
@@ -173,7 +173,7 @@ public class UserController {
     }
 
     @PostMapping("/status-change-ongoing")
-    String statusChangeConfirmOngoing(@RequestParam("id")String id, Model model,
+    public String statusChangeConfirmOngoing(@RequestParam("id")String id, Model model,
                                @Valid @ModelAttribute("visitStatusBindingModel")
                                        VisitStatusBindingModel visitStatusBindingModel,
                                @AuthenticationPrincipal Principal principal){
@@ -184,7 +184,7 @@ public class UserController {
     }
 
     @PostMapping("/status-change-archive")
-    String statusChangeConfirmArchive(@RequestParam("id")String id, Model model,
+    public String statusChangeConfirmArchive(@RequestParam("id")String id, Model model,
                                @Valid @ModelAttribute("visitStatusBindingModel")
                                        VisitStatusBindingModel visitStatusBindingModel,
                                @AuthenticationPrincipal Principal principal){

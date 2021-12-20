@@ -35,7 +35,7 @@ public class VisitController {
     }
 
     @GetMapping("/add")
-    String addVisit(@RequestParam("id")String id, Model model){
+    public String addVisit(@RequestParam("id")String id, Model model){
         model.addAttribute("visitAddBindingModel",new VisitAddBindingModel());
         model.addAttribute("id",id);
         return "add-visit";
@@ -61,7 +61,7 @@ public class VisitController {
         return "view-visit";
     }
      @GetMapping("/view-visit")
-    String viewVisit(@RequestParam("id")String id,Model model){
+     public String viewVisit(@RequestParam("id")String id,Model model){
        VisitServiceModel visitServiceModel = this.visitService.findVisitById(id);
         VisitViewModel visitViewModel=this.modelMapper.map(visitServiceModel,VisitViewModel.class);
         model.addAttribute("date", visitViewModel.getDate());
@@ -73,31 +73,11 @@ public class VisitController {
     }
 
     @GetMapping("/view-all-visits")
-    String viewAllVisits(@RequestParam("id")String id,Model model, @AuthenticationPrincipal Principal principal){
+     public String viewAllVisits(@RequestParam("id")String id,Model model, @AuthenticationPrincipal Principal principal){
         model.addAttribute("username",principal.getName());
         model.addAttribute("visitList",this.visitService.findAllVisits(id));
 
         return "view-all-visits";
     }
 
-    /*@GetMapping("/status-change")
-    String statusChange(@RequestParam("id")String id,Model model){
-        model.addAttribute("visitAddBindingModel",new VisitAddBindingModel());
-        model.addAttribute("id",id);
-        return "admin";
-    }
-
-    @PostMapping("/status-change")
-    String statusChangeConfrim(@RequestParam("id")String id,Model model,@AuthenticationPrincipal Principal principal){
-       VisitServiceModel visitServiceModel = this.visitService.visitStatusChange(id);
-        VisitViewModel visitViewModel = this.modelMapper.map(visitServiceModel,VisitViewModel.class);
-
-        model.addAttribute("date", visitViewModel.getDate());
-        model.addAttribute("price",visitViewModel.getPrice());
-        model.addAttribute("progress", visitViewModel.getProgress());
-        model.addAttribute("model", visitServiceModel.getCar().getModel());
-        model.addAttribute("mechanic",visitViewModel.getMechanicName());
-
-        return "admin";
-    }*/
 }

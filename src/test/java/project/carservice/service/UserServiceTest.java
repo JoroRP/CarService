@@ -9,14 +9,9 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import project.carservice.error.UserNotFoundException;
-import project.carservice.model.service.UserDetailsServiceModel;
-import project.carservice.model.service.UserServiceModel;
-import project.carservice.model.view.UserViewModel;
 import project.carservice.repository.UserRepository;
 
 import javax.transaction.Transactional;
-import java.util.ArrayList;
-
 import static org.mockito.Mockito.*;
 
 @SpringBootTest
@@ -64,10 +59,11 @@ public class UserServiceTest {
 
     @Test
     public void testCreateAdmin(){
-        if(this.userRepository.count()==0){
+
+           long count= this.userRepository.count();
             this.userService.createAdmin();
-        }
-        Assert.assertEquals(1,this.userRepository.count());
+
+        Assert.assertEquals(count,this.userRepository.count());
     }
 
 }
